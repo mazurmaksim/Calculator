@@ -57,6 +57,7 @@ import java.awt.event.ActionListener;
              a.setA( Double.parseDouble( txtwin.getText() ) );
              ar.calculate( a.getOperators( operation ), a, b);
              txtwin.setText(String.valueOf( ar.result ) );
+             //
          }
      };
 
