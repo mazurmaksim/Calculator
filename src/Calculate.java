@@ -1,7 +1,7 @@
- public class Calculate{
+public class Calculate{
 
    private double a;
-   private String[] operators = {"+", "-", "=", "x", "/", "C", "x^2"};
+   private String[] operators = {"+", "-", "=", "x", "/", "C", "x^2", "sqrt"};
 
    public Calculate( double a ){
      this.a = a;
@@ -24,6 +24,9 @@
        return Math.pow( a, 2 );
    }
 
+   public double xSqrt( double a ){
+      return Math.sqrt( a );
+     }
    public double operMultiply( double a, double b ){
        return a * b;
    }

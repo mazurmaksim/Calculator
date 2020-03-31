@@ -32,6 +32,8 @@ public class Ariphmetisc implements CalculatorImpl {
              break;
              case( "x^2" ): result = tmp.xPow( a.getA() );
              break;
+             case( "sqrt" ): result = tmp.xSqrt( a.getA() );
+             break;
        }
 
         return result;
