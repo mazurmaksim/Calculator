@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 public class Calculate{
 
    private double a;
-   private String[] operators = {"+", "-", "=", "x", "/", "C", "x^2", "sqrt","+/-"};
+   private String[] operators = {"+", "-", "=", "x", "/", "C", "x^2", "sqrt","+/-", "1/x"};
 
    public Calculate( double a ){
      this.a = a;
@@ -44,6 +44,14 @@ public class Calculate{
        return  c.doubleValue();
    }
 
+   public double oneDivx( double a ){
+       BigDecimal k = BigDecimal.valueOf(1.0);
+       BigDecimal r = BigDecimal.valueOf(a);
+       BigDecimal c = k.divide(r);
+       return  c.doubleValue();
+
+   }
+
    public double operMinus( double a, double b ){
        BigDecimal k = BigDecimal.valueOf(a);
        BigDecimal r = BigDecimal.valueOf(b);
@@ -57,10 +65,6 @@ public class Calculate{
 
    public double operDivide( double a, double b){
        return a/b;
-   }
-
-   public double onedevide(double d){
-       return 0;
    }
 
    public void setA( double a ){

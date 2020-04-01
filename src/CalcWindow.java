@@ -90,7 +90,23 @@ import java.text.DecimalFormat;
              a.setA( Double.parseDouble( txtwin.getText() ) );
              ar.calculate( a.getOperators( operation ), a, b);
              addtoText( a );
-             txtwin.setText(String.valueOf( df.format(ar.result) ) );
+             if( checkDecimal(ar.result) ) {
+                 txtwin.setText(String.valueOf( (int)ar.result));
+             } else txtwin.setText(String.valueOf( ar.result));
+         }
+     };
+
+     private ActionListener actOneDivx = new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+             operation = ((JButton) e.getSource()).getText();
+             a.setA( Double.parseDouble( txtwin.getText() ) );
+             ar.calculate( a.getOperators( operation ), a, b);
+             addtoText( a );
+             if(checkDecimal( ar.result)) {
+                 txtwin.setText(String.valueOf((int) ar.result));
+             }
+             else txtwin.setText(String.valueOf( ar.result));
          }
      };
 
@@ -103,7 +119,9 @@ import java.text.DecimalFormat;
                  a.setA(Double.parseDouble(txtwin.getText()));
                  ar.calculate(a.getOperators(operation), a, b);
                  addtoText( a );
-                 txtwin.setText(String.valueOf( df.format(ar.result)));
+                 if(checkDecimal( ar.result) ) {
+                     txtwin.setText(String.valueOf( (int ) ar.result ) );
+                 } else txtwin.setText(String.valueOf( ar.result ) );
              }
              else {
                  txtwin.setFont( new Font("Calibri", Font.BOLD,40) );
@@ -161,7 +179,7 @@ import java.text.DecimalFormat;
 
 
              b.setA( 0 );
-             txtwin.setText( String.valueOf( b.getA() ) );
+             txtwin.setText( String.valueOf( (int)b.getA() ) );
              txtfil="";
 
          }
@@ -383,6 +401,7 @@ import java.text.DecimalFormat;
     zero.addActionListener( digits );
     comma.addActionListener( digits );
 
+    one_div_x.addActionListener( actOneDivx );
     plusminus.addActionListener( actPlusminus );
     x_sqrt.addActionListener( actX_sqrt );
     x_pow.addActionListener( actX_pow );

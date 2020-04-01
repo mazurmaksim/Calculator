@@ -36,6 +36,8 @@ public class Ariphmetisc implements CalculatorImpl {
              break;
              case( "+/-" ): result = tmp.plusMinus( a.getA() );
              break;
+             case( "1/x" ): result = tmp.oneDivx( a.getA() );
+             break;
        }
 
         return result;
