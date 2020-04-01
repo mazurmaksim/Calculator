@@ -34,6 +34,8 @@ public class Ariphmetisc implements CalculatorImpl {
              break;
              case( "sqrt" ): result = tmp.xSqrt( a.getA() );
              break;
+             case( "+/-" ): result = tmp.plusMinus( a.getA() );
+             break;
        }
 
         return result;

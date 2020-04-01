@@ -1,7 +1,9 @@
+import java.math.BigDecimal;
+
 public class Calculate{
 
    private double a;
-   private String[] operators = {"+", "-", "=", "x", "/", "C", "x^2", "sqrt"};
+   private String[] operators = {"+", "-", "=", "x", "/", "C", "x^2", "sqrt","+/-"};
 
    public Calculate( double a ){
      this.a = a;
@@ -16,8 +18,15 @@ public class Calculate{
      return "";
    }
 
+   public double plusMinus( double a ){
+
+       return a*(-1);
+   }
    public double operPlus( double a, double b ){
-    return a + b;
+       BigDecimal k = BigDecimal.valueOf(a);
+       BigDecimal r = BigDecimal.valueOf(b);
+       BigDecimal c = k.add(r);
+       return  c.doubleValue();
    }
 
    public double xPow( double a ){
@@ -27,12 +36,19 @@ public class Calculate{
    public double xSqrt( double a ){
       return Math.sqrt( a );
      }
+
    public double operMultiply( double a, double b ){
-       return a * b;
+       BigDecimal k = BigDecimal.valueOf(a);
+       BigDecimal r = BigDecimal.valueOf(b);
+       BigDecimal c = k.multiply(r);
+       return  c.doubleValue();
    }
 
    public double operMinus( double a, double b ){
-    return  a - b;
+       BigDecimal k = BigDecimal.valueOf(a);
+       BigDecimal r = BigDecimal.valueOf(b);
+       BigDecimal c = k.subtract(r);
+    return  c.doubleValue();
    }
 
    public double percent( double b){

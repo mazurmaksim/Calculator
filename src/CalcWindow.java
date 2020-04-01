@@ -2,7 +2,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- import java.text.DecimalFormat;
+import java.text.DecimalFormat;
 
  public class CalcWindow extends JFrame {
 
@@ -40,21 +40,48 @@ import java.awt.event.ActionListener;
     private String operation = "";
     private JTextField lab;
     private StringBuilder str;
-    private DecimalFormat df = new DecimalFormat("0.#############");
+    private DecimalFormat df = new DecimalFormat("0.###");
 
 
      private ActionListener actPlus = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-        operation = ((JButton) e.getSource()).getText();
-        a.setA( Double.parseDouble( txtwin.getText() ) );
-        addtoText( a );
-        txtwin.setText("");
-        txtfil="";
+            operation = ((JButton) e.getSource()).getText();
+            try {
+                a.setA(Double.parseDouble(txtwin.getText()));
+            } catch (NumberFormatException er) {
+                a.setA( a.getA() );
+            }
+
+            addtoText(a);
+            txtwin.setText("");
+            txtfil = "";
 
         }
     };
+
+     private ActionListener actPlusminus = new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+
+
+             try {
+                 operation = ((JButton) e.getSource()).getText();
+                 a.setA(Double.parseDouble(txtwin.getText()));
+                 ar.calculate(a.getOperators(operation), a, b);
+                 a.setA( ar.result );
+                 if( checkDecimal( a.getA() )) {
+                     txtwin.setText(String.valueOf((int) a.getA()));
+                 } else txtwin.setText(String.valueOf( a.getA()) );
+                 txtfil = "";
+             } catch ( NumberFormatException er){
+                 ar.calculate(a.getOperators(operation), a, b);
+                 a.setA( ar.result );
+                 txtwin.setText(String.valueOf(df.format(a.getA())));
+             }
+         }
+     };
 
      private ActionListener actX_pow = new ActionListener() {
          @Override
@@ -169,12 +196,21 @@ import java.awt.event.ActionListener;
          }
          System.out.print(b.getA());
          ar.calculate( a.getOperators( operation ), a, b);
-         txtwin.setText(String.valueOf( df.format(ar.result) ) );
-         a.setA( ar.result );
+
+         if(checkDecimal( ar.result )) {
+           txtwin.setText(String.valueOf( (int) ar.result ));
+           a.setA( (int) ar.result );
+         }
+         else {
+             txtwin.setText(String.valueOf(ar.result));
+             a.setA( ar.result );
+         }
+
          System.out.println(" = " + ar.result );
          str.append( df.format(b.getA()) ).append("=").append( df.format(ar.result) );
          lab.setText( String.valueOf( str ));
          txtfil = "";
+            System.out.println( df.format( ar.result ) );
         }
 
     };
@@ -324,7 +360,7 @@ import java.awt.event.ActionListener;
     zero.setFont( butfont );
     f.add( zero );
 
-    comma = new JButton( "," );
+    comma = new JButton( "." );
     comma.setBounds( 200, 600+slide, 100, 100 );
     comma.setFont( butfont );
     f.add( comma );
@@ -345,7 +381,9 @@ import java.awt.event.ActionListener;
     eight.addActionListener( digits);
     nine.addActionListener( digits );
     zero.addActionListener( digits );
+    comma.addActionListener( digits );
 
+    plusminus.addActionListener( actPlusminus );
     x_sqrt.addActionListener( actX_sqrt );
     x_pow.addActionListener( actX_pow );
     ce.addActionListener( actCe );
@@ -356,7 +394,7 @@ import java.awt.event.ActionListener;
     equal.addActionListener( actEqual );
     divide.addActionListener( actDivide );
 
-    f.setSize( 406, 744 );
+    f.setSize( 406, 754 );
     f.setLayout( null );
     f.setVisible( true );
     f.setResizable( false );
@@ -374,5 +412,10 @@ import java.awt.event.ActionListener;
        }
 
    }
+
+   public boolean checkDecimal( double num ){
+       return num%1 == 0;
+       }
+
  
  }
