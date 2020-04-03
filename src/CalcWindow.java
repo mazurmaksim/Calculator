@@ -6,33 +6,7 @@ import java.text.DecimalFormat;
 
 public class CalcWindow extends JFrame {
 
-    private JFrame f;
-    private Font butfont;
     private JTextField txtwin;
-    private JButton percent;
-    private JButton ce;
-    private JButton c;
-    private JButton del_left;
-    private JButton one_div_x;
-    private JButton x_pow;
-    private JButton x_sqrt;
-    private JButton divide;
-    private JButton seven;
-    private JButton eight;
-    private JButton nine;
-    private JButton multiply;
-    private JButton four;
-    private JButton five;
-    private JButton six;
-    private JButton minus;
-    private JButton one;
-    private JButton two;
-    private JButton three;
-    private JButton plus;
-    private JButton plusminus;
-    private JButton zero;
-    private JButton comma;
-    private JButton equal;
     private String txtfil = "";
     private Calculate a;
     private Calculate b;
@@ -42,183 +16,15 @@ public class CalcWindow extends JFrame {
     private StringBuilder str;
     private DecimalFormat df = new DecimalFormat("0.###");
 
-
-    private ActionListener actPlus = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setAripheticOper( operation,  e );
-        }
-    };
-
-    private ActionListener actPlusminus = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          try {
-                operation = ((JButton) e.getSource()).getText();
-                a.setA(Double.parseDouble(txtwin.getText()));
-                ar.calculate(a.getOperators(operation), a, b);
-                a.setA( ar.result );
-                if( checkDecimal( a.getA() )) {
-                    txtwin.setText(String.valueOf((int) a.getA()));
-                } else txtwin.setText(String.valueOf( a.getA()) );
-                txtfil = "";
-            } catch ( NumberFormatException er){
-                ar.calculate(a.getOperators(operation), a, b);
-                a.setA( ar.result );
-                txtwin.setText(String.valueOf(df.format(a.getA())));
-            }
-        }
-    };
-
-    private ActionListener actX_pow = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            operation = ((JButton) e.getSource()).getText();
-            a.setA( Double.parseDouble( txtwin.getText() ) );
-            ar.calculate( a.getOperators( operation ), a, b);
-            addtoText( a );
-            if( checkDecimal(ar.result) ) {
-                txtwin.setText(String.valueOf( (int)ar.result));
-            } else txtwin.setText(String.valueOf( ar.result));
-            txtfil="";
-        }
-    };
-
-    private ActionListener actOneDivx = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            operation = ((JButton) e.getSource()).getText();
-            a.setA( Double.parseDouble( txtwin.getText() ) );
-            ar.calculate( a.getOperators( operation ), a, b);
-            addtoText( a );
-            if(checkDecimal( ar.result)) {
-                txtwin.setText(String.valueOf((int) ar.result));
-            }
-            else txtwin.setText(String.valueOf( ar.result));
-        }
-    };
-
-    private ActionListener actX_sqrt = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            if( Double.parseDouble( txtwin.getText() ) >=0 ) {
-                operation = ((JButton) e.getSource()).getText();
-                a.setA(Double.parseDouble(txtwin.getText()));
-                ar.calculate(a.getOperators(operation), a, b);
-                addtoText( a );
-                if(checkDecimal( ar.result) ) {
-                    txtwin.setText(String.valueOf( (int ) ar.result ) );
-                } else txtwin.setText(String.valueOf( ar.result ) );
-            }
-            else {
-                txtwin.setFont( new Font("Calibri", Font.BOLD,40) );
-                txtwin.setText( "Incorrect data entered");
-
-            }
-            txtfil="";
-
-        }
-    };
-
-    private ActionListener actDivide = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setAripheticOper( operation,  e );
-        }
-    };
-
-    private ActionListener actC = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            operation = "";
-            a.setA( 0 );
-            txtwin.setText( "0" );
-            b.setA( 0 );
-            txtfil="";
-            lab.setText( "" );
-            str.setLength( 0 );
-
-        }
-    };
-
-    private ActionListener actMinus = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setAripheticOper( operation,  e );
-        }
-    };
-
-    private ActionListener actCe = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-
-            b.setA( 0 );
-            txtwin.setText( String.valueOf( (int)b.getA() ) );
-            txtfil="";
-
-        }
-    };
-
-    private ActionListener actMultiply = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setAripheticOper( operation,  e );
-        }
-    };
-
-    private ActionListener actEqual = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            str.setLength(0);
-            addtoText( a );
-
-            System.out.print( a.getA());
-            System.out.print( " " + operation + " " );
-            try {
-
-                b.setA(Double.parseDouble(txtwin.getText()));
-
-            } catch (NumberFormatException et){
-                b.setA( a.getA() );
-            }
-            System.out.print(b.getA());
-            ar.calculate( a.getOperators( operation ), a, b);
-
-            if(checkDecimal( ar.result )) {
-                txtwin.setText(String.valueOf( (int) ar.result ));
-                a.setA( (int) ar.result );
-            }
-            else {
-                txtwin.setText(String.valueOf(ar.result));
-                a.setA( ar.result );
-            }
-
-            System.out.println(" = " + ar.result );
-            str.append( df.format(b.getA()) ).append("=").append( df.format(ar.result) ).append("\n");
-            lab.setText( String.valueOf( str ));
-            str.setLength(0);
-            txtfil = "";
-            System.out.println( df.format( ar.result ) );
-        }
-
-    };
-
-    private ActionListener digits = new ActionListener() {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
-            txtwin.setText("");
-            txtfil += ((JButton)e.getSource()).getText();
-            txtwin.setText( txtfil );
-
-        }
-    };
-
     public CalcWindow(){
+
+        JFrame f;
+        Font butfont;
+        JButton ce, c;
+        JButton del_left, comma, plusminus;
+        JButton one_div_x, percent, x_pow, x_sqrt, divide;
+        JButton zero, one, two, three, four, five, six, seven, eight, nine;
+        JButton multiply, minus, plus, equal;
         int slide = 25;
         a = new Calculate(0 );
         b = new Calculate(0 );
@@ -226,6 +32,152 @@ public class CalcWindow extends JFrame {
         f = new JFrame( "Calculator" );
         butfont =  new Font( "Calibri", Font.PLAIN, 30 );
         str = new StringBuilder();
+
+        ActionListener actPlus = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setAripheticOper( operation,  e );
+            }
+        };
+
+
+        ActionListener actPlusminus = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    operation = ((JButton) e.getSource()).getText();
+                    a.setA(Double.parseDouble(txtwin.getText()));
+                    ar.calculate(a.getOperators(operation), a, b);
+                    a.setA( ar.result );
+                    if( checkDecimal( a.getA() )) {
+                        txtwin.setText(String.valueOf((int) a.getA()));
+                    } else txtwin.setText(String.valueOf( a.getA()) );
+                    txtfil = "";
+                } catch ( NumberFormatException er){
+                    ar.calculate(a.getOperators(operation), a, b);
+                    a.setA( ar.result );
+                    txtwin.setText(String.valueOf(df.format(a.getA())));
+                }
+            }
+        };
+
+        ActionListener actX_pow = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                operation = ((JButton) e.getSource()).getText();
+                a.setA( Double.parseDouble( txtwin.getText() ) );
+                ar.calculate( a.getOperators( operation ), a, b);
+                addtoText( a );
+                if( checkDecimal(ar.result) ) {
+                    txtwin.setText(String.valueOf( (int)ar.result));
+                } else txtwin.setText(String.valueOf( ar.result));
+                txtfil="";
+            }
+        };
+
+        ActionListener actOneDivx = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                operation = ((JButton) e.getSource()).getText();
+                a.setA( Double.parseDouble( txtwin.getText() ) );
+                ar.calculate( a.getOperators( operation ), a, b);
+                addtoText( a );
+                if(checkDecimal( ar.result)) {
+                    txtwin.setText(String.valueOf((int) ar.result));
+                }
+                else txtwin.setText(String.valueOf( ar.result));
+            }
+        };
+
+        ActionListener actX_sqrt = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if( Double.parseDouble( txtwin.getText() ) >=0 ) {
+                    operation = ((JButton) e.getSource()).getText();
+                    a.setA(Double.parseDouble(txtwin.getText()));
+                    ar.calculate(a.getOperators(operation), a, b);
+                    addtoText( a );
+                    if(checkDecimal( ar.result) ) {
+                        txtwin.setText(String.valueOf( (int ) ar.result ) );
+                    } else txtwin.setText(String.valueOf( ar.result ) );
+                }
+                else {
+                    txtwin.setFont( new Font("Calibri", Font.BOLD,40) );
+                    txtwin.setText( "Incorrect data entered");
+
+                }
+                txtfil="";
+
+            }
+        };
+
+        ActionListener actDivide = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setAripheticOper( operation,  e );
+            }
+        };
+
+        ActionListener actC = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                operation = "";
+                a.setA( 0 );
+                txtwin.setText( "0" );
+                b.setA( 0 );
+                txtfil="";
+                lab.setText( "" );
+                str.setLength( 0 );
+
+            }
+        };
+
+        ActionListener actMinus = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setAripheticOper( operation,  e );
+            }
+        };
+
+        ActionListener actCe = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                b.setA( 0 );
+                txtwin.setText( String.valueOf( (int)b.getA() ) );
+                txtfil="";
+
+            }
+        };
+
+        ActionListener actMultiply = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setAripheticOper( operation,  e );
+            }
+        };
+
+        ActionListener actEqual = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                equal( a, b, operation );
+            }
+        };
+
+        ActionListener digits = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
+                txtwin.setText("");
+                txtfil += ((JButton)e.getSource()).getText();
+                txtwin.setText( txtfil );
+
+            }
+        };
 
 
         lab = new JTextField();
@@ -415,6 +367,39 @@ public class CalcWindow extends JFrame {
         addtoText( a );
         txtwin.setText("");
         txtfil="";
+    }
+
+   public void equal( Calculate a, Calculate b, String operation ){
+        str.setLength(0);
+        addtoText( a );
+
+        System.out.print( a.getA());
+        System.out.print( " " + operation + " " );
+        try {
+
+            b.setA(Double.parseDouble(txtwin.getText()));
+
+        } catch (NumberFormatException et){
+            b.setA( a.getA() );
+        }
+        System.out.print(b.getA());
+        ar.calculate( a.getOperators( operation ), a, b);
+
+        if(checkDecimal( ar.result )) {
+            txtwin.setText(String.valueOf( (int) ar.result ));
+            a.setA( (int) ar.result );
+        }
+        else {
+            txtwin.setText(String.valueOf(ar.result));
+            a.setA( ar.result );
+        }
+
+        System.out.println(" = " + ar.result );
+        str.append( df.format(b.getA()) ).append("=").append( df.format(ar.result) ).append("\n");
+        lab.setText( String.valueOf( str ));
+        str.setLength(0);
+        txtfil = "";
+        System.out.println( df.format( ar.result ) );
     }
 
 }
