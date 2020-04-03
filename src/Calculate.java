@@ -30,7 +30,11 @@ public class Calculate{
    }
 
    public double xPow( double a ){
-       return Math.pow( a, 2 );
+       BigDecimal k = BigDecimal.valueOf(a);
+       BigDecimal r = BigDecimal.valueOf(a);
+       BigDecimal c = r.multiply(k);
+       return  c.doubleValue();
+
    }
 
    public double xSqrt( double a ){
@@ -45,11 +49,11 @@ public class Calculate{
    }
 
    public double oneDivx( double a ){
-       BigDecimal k = BigDecimal.valueOf(1.0);
-       BigDecimal r = BigDecimal.valueOf(a);
-       BigDecimal c = k.divide(r);
-       return  c.doubleValue();
-
+      // BigDecimal k = BigDecimal.valueOf(1.0);
+      // BigDecimal r = BigDecimal.valueOf(a);
+       //BigDecimal c = k.divide(r, RoundingMode.UP);
+       //return  c.doubleValue();
+        return 1/a;
    }
 
    public double operMinus( double a, double b ){
