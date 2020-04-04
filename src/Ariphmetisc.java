@@ -50,4 +50,7 @@ public class Ariphmetisc implements CalculatorImpl {
         this.result = 0;
 
     }
+
+
+
 }

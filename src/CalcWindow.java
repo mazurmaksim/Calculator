@@ -36,7 +36,7 @@ public class CalcWindow extends JFrame {
         ActionListener actPlus = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setAripheticOper( operation,  e );
+                setAripheticOper( e );
             }
         };
 
@@ -115,7 +115,7 @@ public class CalcWindow extends JFrame {
         ActionListener actDivide = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setAripheticOper( operation,  e );
+                setAripheticOper( e );
             }
         };
 
@@ -137,7 +137,7 @@ public class CalcWindow extends JFrame {
         ActionListener actMinus = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setAripheticOper( operation,  e );
+                setAripheticOper(  e );
             }
         };
 
@@ -156,7 +156,7 @@ public class CalcWindow extends JFrame {
         ActionListener actMultiply = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setAripheticOper( operation,  e );
+                setAripheticOper( e );
             }
         };
 
@@ -187,7 +187,7 @@ public class CalcWindow extends JFrame {
         lab.setHorizontalAlignment( lab.RIGHT );
         f.add(lab);
 
-        txtwin = new JTextField( "", 11);
+        txtwin = new JTextField( "0", 11);
         txtwin.setBounds( 0, 0 + slide, 400, 100 );
         txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
         txtwin.setHorizontalAlignment( txtwin.RIGHT );
@@ -348,12 +348,7 @@ public class CalcWindow extends JFrame {
 
     public void addtoText( Calculate a ){
 
-        if ( !lab.getText().isEmpty() ){
             str.append( df.format(a.getA()) ).append( operation );
-        }
-        else {
-            lab.setText( String.valueOf(df.format(a.getA() )) + " " + operation );
-        }
 
     }
 
@@ -361,15 +356,19 @@ public class CalcWindow extends JFrame {
         return num%1 == 0;
     }
 
-    public void setAripheticOper( String operation, ActionEvent e ){
+    public void setAripheticOper( ActionEvent e ){
+
         this.operation = ((JButton) e.getSource()).getText();
         a.setA( Double.parseDouble( txtwin.getText() ) );
-        addtoText( a );
         txtwin.setText("");
+        addtoText( a );
+        lab.setText( String.valueOf( str ));
         txtfil="";
+        System.out.println( str );
+
     }
 
-   public void equal( Calculate a, Calculate b, String operation ){
+    public void equal( Calculate a, Calculate b, String operation ){
         str.setLength(0);
         addtoText( a );
 
