@@ -1,3 +1,5 @@
+//package calcproject;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +17,8 @@ public class CalcWindow extends JFrame {
     private JTextField lab;
     private StringBuilder str;
     private DecimalFormat df = new DecimalFormat("0.###");
+    private strParse parseStr;
+    private String[] array;
 
     public CalcWindow(){
 
@@ -32,6 +36,8 @@ public class CalcWindow extends JFrame {
         f = new JFrame( "Calculator" );
         butfont =  new Font( "Calibri", Font.PLAIN, 30 );
         str = new StringBuilder();
+        parseStr = new strParse();
+        array = new String[3];
 
         ActionListener actPlus = new ActionListener() {
             @Override
@@ -116,6 +122,19 @@ public class CalcWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setAripheticOper( e );
+            }
+        };
+       
+        ActionListener actDelLeft = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if( txtwin.getText().length() > 1 ){
+
+                txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
+
+                }
+              
             }
         };
 
@@ -326,6 +345,7 @@ public class CalcWindow extends JFrame {
         zero.addActionListener( digits );
         comma.addActionListener( digits );
 
+        del_left.addActionListener( actDelLeft );
         one_div_x.addActionListener( actOneDivx );
         plusminus.addActionListener( actPlusminus );
         x_sqrt.addActionListener( actX_sqrt );
@@ -348,7 +368,7 @@ public class CalcWindow extends JFrame {
 
     public void addtoText( Calculate a ){
 
-            str.append( df.format(a.getA()) ).append( operation );
+        str.append( df.format(a.getA()) ).append( operation );
 
     }
 
@@ -356,15 +376,14 @@ public class CalcWindow extends JFrame {
         return num%1 == 0;
     }
 
-    public void setAripheticOper( ActionEvent e ){
+
+    public void setAripheticOper( ActionEvent e ) {
 
         this.operation = ((JButton) e.getSource()).getText();
-        a.setA( Double.parseDouble( txtwin.getText() ) );
+        a.setA(Double.parseDouble(txtwin.getText()));
+        addtoText(a);
+        txtfil = "";
         txtwin.setText("");
-        addtoText( a );
-        lab.setText( String.valueOf( str ));
-        txtfil="";
-        System.out.println( str );
 
     }
 
@@ -400,5 +419,6 @@ public class CalcWindow extends JFrame {
         txtfil = "";
         System.out.println( df.format( ar.result ) );
     }
+
 
 }

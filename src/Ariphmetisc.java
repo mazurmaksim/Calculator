@@ -1,3 +1,5 @@
+//package calcproject;
+
 public class Ariphmetisc implements CalculatorImpl {
 
     double result;
@@ -38,6 +40,7 @@ public class Ariphmetisc implements CalculatorImpl {
              break;
              case( "1/x" ): result = tmp.oneDivx( a.getA() );
              break;
+       
        }
 
         return result;
