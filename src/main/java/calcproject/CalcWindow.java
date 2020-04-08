@@ -9,13 +9,12 @@ import java.text.DecimalFormat;
 public class CalcWindow extends JFrame {
 
     private JTextField txtwin;
-    private String txtfil = "";
     private Calculate a;
     private Calculate b;
     private Ariphmetisc ar;
     private String operation = "";
     private JTextField lab;
-    private StringBuilder str;
+    private StringBuilder str, txtfil;
     private DecimalFormat df = new DecimalFormat("0.###");
 
     public CalcWindow(){
@@ -34,6 +33,7 @@ public class CalcWindow extends JFrame {
         f = new JFrame( "Calculator" );
         butfont =  new Font( "Calibri", Font.PLAIN, 30 );
         str = new StringBuilder();
+        txtfil = new StringBuilder();
 
         ActionListener actPlus = new ActionListener() {
             @Override
@@ -54,7 +54,7 @@ public class CalcWindow extends JFrame {
                     if( checkDecimal( a.getA() )) {
                         txtwin.setText(String.valueOf((int) a.getA()));
                     } else txtwin.setText(String.valueOf( a.getA()) );
-                    txtfil = "";
+                    txtfil.setLength(0);
                 } catch ( NumberFormatException er){
                     ar.calculate(a.getOperators(operation), a, b);
                     a.setA( ar.result );
@@ -73,7 +73,7 @@ public class CalcWindow extends JFrame {
                 if( checkDecimal(ar.result) ) {
                     txtwin.setText(String.valueOf( (int)ar.result));
                 } else txtwin.setText(String.valueOf( ar.result));
-                txtfil="";
+                txtfil.setLength(0);
             }
         };
 
@@ -109,7 +109,7 @@ public class CalcWindow extends JFrame {
                     txtwin.setText( "Incorrect data entered");
 
                 }
-                txtfil="";
+                txtfil.setLength(0);
 
             }
         };
@@ -134,7 +134,8 @@ public class CalcWindow extends JFrame {
                 if( txtwin.getText().length() > delSize ){
 
                 txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
-                txtfil = txtwin.getText();
+                txtfil.setLength(0);
+                txtfil.append(txtwin.getText());
                } else txtwin.setText( "0" );              
             }
         };
@@ -147,7 +148,7 @@ public class CalcWindow extends JFrame {
                 a.setA( 0 );
                 txtwin.setText( "0" );
                 b.setA( 0 );
-                txtfil="";
+                txtfil.setLength(0);
                 lab.setText( "" );
                 str.setLength( 0 );
 
@@ -168,7 +169,7 @@ public class CalcWindow extends JFrame {
 
                 b.setA( 0 );
                 txtwin.setText( String.valueOf( (int)b.getA() ) );
-                txtfil="";
+                txtfil.setLength(0);
 
             }
         };
@@ -179,6 +180,22 @@ public class CalcWindow extends JFrame {
                 setAripheticOper( e );
             }
         };
+
+
+        ActionListener actComma = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String tmp = String.valueOf( txtfil );
+
+
+                    if ( !tmp.contains(".")  ) {
+                        txtfil.setLength( 0 );
+                        txtfil.append(txtwin.getText()).append(".");
+                        txtwin.setText( String.valueOf( txtfil ) );
+                    }
+                 }
+        };
+
 
         ActionListener actEqual = new ActionListener() {
             @Override
@@ -193,9 +210,8 @@ public class CalcWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
                 txtwin.setText("");
-                txtfil += ((JButton)e.getSource()).getText();
-                txtwin.setText( txtfil );
-
+                txtfil.append(((JButton)e.getSource()).getText());
+                txtwin.setText( String.valueOf(txtfil) );
             }
         };
 
@@ -208,7 +224,7 @@ public class CalcWindow extends JFrame {
         lab.setBackground( Color.WHITE );
         f.add(lab);
 
-        txtwin = new JTextField( "0", 11);
+        txtwin = new JTextField( "0", 12);
         txtwin.setBounds( 0, 0 + slide, 400, 100 );
         txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
         txtwin.setHorizontalAlignment( txtwin.RIGHT );
@@ -347,8 +363,8 @@ public class CalcWindow extends JFrame {
         eight.addActionListener( digits);
         nine.addActionListener( digits );
         zero.addActionListener( digits );
-        comma.addActionListener( digits );
 
+        comma.addActionListener( actComma );
         del_left.addActionListener( actDelLeft );
         one_div_x.addActionListener( actOneDivx );
         plusminus.addActionListener( actPlusminus );
@@ -387,7 +403,7 @@ public class CalcWindow extends JFrame {
         a.setA(Double.parseDouble(txtwin.getText()));
         addtoText(a);
         lab.setText( String.valueOf( str ) );
-        txtfil = "";
+        txtfil.setLength(0);
         txtwin.setText("");
 
     }
@@ -421,7 +437,7 @@ public class CalcWindow extends JFrame {
         str.append( df.format(b.getA()) ).append("=").append( df.format(ar.result) ).append("\n");
         lab.setText( String.valueOf( str ));
         str.setLength(0);
-        txtfil = "";
+        txtfil.setLength(0);
         System.out.println( df.format( ar.result ) );
     }
 
