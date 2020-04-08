@@ -126,7 +126,7 @@ public class CalcWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                
             	int delSize = 1;
-
+                txtfil.setLength(0);
             	if( Double.parseDouble( txtwin.getText() ) < 0 ){
             	   delSize = 2; 	
             	}
@@ -134,9 +134,12 @@ public class CalcWindow extends JFrame {
                 if( txtwin.getText().length() > delSize ){
 
                 txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
-                txtfil.setLength(0);
+
                 txtfil.append(txtwin.getText());
-               } else txtwin.setText( "0" );              
+               } else {
+                   // txtfil.setLength(0);
+                    txtwin.setText("0");
+                }
             }
         };
 
@@ -166,7 +169,6 @@ public class CalcWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 b.setA( 0 );
                 txtwin.setText( String.valueOf( (int)b.getA() ) );
                 txtfil.setLength(0);
@@ -186,14 +188,12 @@ public class CalcWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tmp = String.valueOf( txtfil );
-
-
                     if ( !tmp.contains(".")  ) {
                         txtfil.setLength( 0 );
                         txtfil.append(txtwin.getText()).append(".");
                         txtwin.setText( String.valueOf( txtfil ) );
-                    }
-                 }
+                }
+            }
         };
 
 
@@ -434,7 +434,7 @@ public class CalcWindow extends JFrame {
         }
 
         System.out.println(" = " + ar.result );
-        str.append( df.format(b.getA()) ).append("=").append( df.format(ar.result) ).append("\n");
+        str.append( df.format(b.getA()) ).append(" = ").append( df.format(ar.result) ).append("\n");
         lab.setText( String.valueOf( str ));
         str.setLength(0);
         txtfil.setLength(0);
