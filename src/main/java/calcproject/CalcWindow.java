@@ -94,7 +94,9 @@ public class CalcWindow extends JFrame {
         ActionListener actX_sqrt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if( txtwin.getText().isEmpty() ){
+                    return;
+                }
                 if( Double.parseDouble( txtwin.getText() ) >=0 ) {
                     operation = ((JButton) e.getSource()).getText();
                     a.setA(Double.parseDouble(txtwin.getText()));
@@ -130,14 +132,10 @@ public class CalcWindow extends JFrame {
             	if( Double.parseDouble( txtwin.getText() ) < 0 ){
             	   delSize = 2; 	
             	}
-
                 if( txtwin.getText().length() > delSize ){
-
                 txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
-
                 txtfil.append(txtwin.getText());
                } else {
-                   // txtfil.setLength(0);
                     txtwin.setText("0");
                 }
             }
