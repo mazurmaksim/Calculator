@@ -1,4 +1,4 @@
-//package calcproject;
+package calcproject;
 
 public class strParse implements CalculatorImpl{
 

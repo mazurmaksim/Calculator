@@ -1,4 +1,4 @@
-//package calcproject;
+package calcproject;
 
 import java.math.BigDecimal;
 

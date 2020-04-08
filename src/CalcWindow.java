@@ -1,4 +1,4 @@
-//package calcproject;
+package calcproject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -128,13 +128,18 @@ public class CalcWindow extends JFrame {
         ActionListener actDelLeft = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+               
+            	int delSize = 1;
 
-                if( txtwin.getText().length() > 1 ){
+            	if( Double.parseDouble( txtwin.getText() ) < 0 ){
+            	   delSize = 2; 	
+            	}
+
+                if( txtwin.getText().length() > delSize ){
 
                 txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
-
-                }
-              
+                
+               } else txtwin.setText( "0" );              
             }
         };
 
@@ -382,6 +387,7 @@ public class CalcWindow extends JFrame {
         this.operation = ((JButton) e.getSource()).getText();
         a.setA(Double.parseDouble(txtwin.getText()));
         addtoText(a);
+        lab.setText( String.valueOf( str ) );
         txtfil = "";
         txtwin.setText("");
 
