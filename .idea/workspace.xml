@@ -1,93 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4408faac-6974-4e8f-9d54-316b0b644ba6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Calulator/CalcWindow$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Calulator/CalcWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Calulator/CalcWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ariphmetisc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ariphmetisc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CalcWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalcWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculate.java" afterDir="false" />
-    </list>
+    <list default="true" id="c963a109-8540-4d53-a97f-d4159a0bfadc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1ZiGUP6LUUUtBeN19fxLkJR9EXV" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1aFgFNMiYNV2G3i2Sr5vZwob4ir" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="create.test.in.the.same.root" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Calculator">
-    <configuration name="Calculate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Calculate" />
-      <module name="Calulator" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Calculator" />
-      <module name="Calulator" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="re" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="re" />
-      <module name="Calulator" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CalculateTest.operPlus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Calulator" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CalculateTest" />
-      <option name="METHOD_NAME" value="operPlus" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="calcproject.Calculator" />
+      <module name="simple-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="calcproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -95,9 +34,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Calculator" />
-        <item itemvalue="Application.re" />
-        <item itemvalue="Application.Calculate" />
-        <item itemvalue="JUnit.CalculateTest.operPlus" />
       </list>
     </recent_temporary>
   </component>
@@ -106,88 +42,30 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4408faac-6974-4e8f-9d54-316b0b644ba6" name="Default Changelist" comment="" />
-      <created>1585314515686</created>
+      <changelist id="c963a109-8540-4d53-a97f-d4159a0bfadc" name="Default Changelist" comment="" />
+      <created>1586336650944</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1585314515686</updated>
+      <updated>1586336650944</updated>
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser" timestamp="1585559726456">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1586337104766">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585559726456" />
-    <state width="1877" height="304" key="GridCell.Tab.0.bottom" timestamp="1585995325438">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1586337104766" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1586337104766">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1237" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585832680244" />
-    <state width="1877" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585995325438" />
-    <state width="1877" height="304" key="GridCell.Tab.0.center" timestamp="1585995325437">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1586337104766" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1586337104766">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1237" height="285" key="GridCell.Tab.0.center/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585832680244" />
-    <state width="1877" height="304" key="GridCell.Tab.0.center/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585995325437" />
-    <state width="1877" height="304" key="GridCell.Tab.0.left" timestamp="1585995325437">
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1586337104766" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1586337104766">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1237" height="285" key="GridCell.Tab.0.left/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585832680244" />
-    <state width="1877" height="304" key="GridCell.Tab.0.left/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585995325437" />
-    <state width="1877" height="304" key="GridCell.Tab.0.right" timestamp="1585995325437">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1237" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585832680244" />
-    <state width="1877" height="304" key="GridCell.Tab.0.right/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585995325437" />
-    <state width="1877" height="351" key="GridCell.Tab.1.bottom" timestamp="1585993440536">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1237" height="329" key="GridCell.Tab.1.bottom/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585779451504" />
-    <state width="1877" height="351" key="GridCell.Tab.1.bottom/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585993440536" />
-    <state width="1877" height="351" key="GridCell.Tab.1.center" timestamp="1585993440536">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1237" height="329" key="GridCell.Tab.1.center/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585779451504" />
-    <state width="1877" height="351" key="GridCell.Tab.1.center/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585993440536" />
-    <state width="1877" height="351" key="GridCell.Tab.1.left" timestamp="1585993440535">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1237" height="329" key="GridCell.Tab.1.left/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585779451504" />
-    <state width="1877" height="351" key="GridCell.Tab.1.left/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585993440535" />
-    <state width="1877" height="351" key="GridCell.Tab.1.right" timestamp="1585993440536">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1237" height="329" key="GridCell.Tab.1.right/0.0.1920.1050/-1280.54.1280.994@-1280.54.1280.994" timestamp="1585779451504" />
-    <state width="1877" height="351" key="GridCell.Tab.1.right/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585993440536" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1585431538463">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585431538463" />
-    <state x="656" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1585336116682">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="656" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585336116682" />
-    <state x="685" y="486" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585431894553">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="685" y="486" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585431894553" />
-    <state x="724" y="228" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585431806133">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="724" y="228" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585431806133" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1585903704353">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1585903704353" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/-1280.54.1280.994@0.0.1920.1050" timestamp="1586337104766" />
   </component>
 </project>
