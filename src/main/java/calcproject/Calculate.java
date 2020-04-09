@@ -52,10 +52,7 @@ public class Calculate{
    }
 
    public double oneDivx( double a ){
-       BigDecimal k = BigDecimal.valueOf(1.0);
-       BigDecimal r = BigDecimal.valueOf(a);
-       BigDecimal c = k.divide(r, RoundingMode.HALF_EVEN);
-       return  c.doubleValue();
+       return 1/a;
    }
 
    public double operMinus( double a, double b ){

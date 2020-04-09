@@ -1,42 +1,45 @@
 package calcproject;
 
-public class strParse implements CalculatorImpl{
+public class strParse {
+   private String k = "1.3+2.567*3.7-15/6+";
 
-    private Calculate g;
-    private Calculate f;
-    Ariphmetisc cs;
+   public static double parseString( String str ){
 
-    public strParse( ){
-
-        g = new Calculate(0 );
-        f = new Calculate(0 );
-        cs = new Ariphmetisc();
-
-    }
-
-    @Override
-    public double calculate(String operation, Calculate a, Calculate b) {
-        return 0;
-    }
-
-    public double formulParser( StringBuilder str ){
-        Ariphmetisc cs = new Ariphmetisc();
-        Calculate s = new Calculate( 0 );
-        Calculate t = new Calculate( 0 );
+        String operatios = "+-*/";
         double result = 0;
-        String operation = "'+'";
+        double tmp = 0;
+        String tmpnum = "";
+        String operator = "";
+        //String[] arr = new String[3];
 
-        String[] tmp = String.valueOf( str ).split(operation);
+        for ( int i=0;i<str.length(); i++ ){
 
-        for (String j : tmp){
-            s.setA( Double.parseDouble( j ) );
-            cs.calculate( "+", s, t);
-            t.setA( cs.result );
+            for ( int j=0; j< operatios.length();j++){
+
+                if ( str.charAt( i ) == operatios.charAt( j ) )
+                {
+                    //System.out.println( str.charAt( i ));
+                    tmpnum="";
+                    operator = String.valueOf(str.charAt( i ));
+
+                }
+                else if ( str.charAt( i ) != operatios.charAt( j ) ){
+                    tmpnum += str.charAt(i);
+                    System.out.print( tmpnum + "\n" );
+                    break;
+                }
+
+                tmpnum = "";
+
+
+            }
+
         }
 
+        return 0;
+   }
 
-        return cs.result;
+    public static void main(String[] args) {
+        parseString( "1.3+2.567*3.7-15/6+" );
     }
-
-
 }

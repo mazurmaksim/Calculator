@@ -84,7 +84,7 @@ public class CalcWindow extends JFrame {
         ActionListener actOneDivx = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                texttoFrame();
+
                 operation = ((JButton) e.getSource()).getText();
                 a.setA( Double.parseDouble( txtwin.getText() ) );
                 ar.calculate( a.getOperators( operation ), a, b);
@@ -93,7 +93,9 @@ public class CalcWindow extends JFrame {
                     txtwin.setText(String.valueOf((int) ar.result));
                 }
                 else txtwin.setText(String.valueOf( ar.result));
+                texttoFrame();
             }
+
         };
 
         ActionListener actX_sqrt = new ActionListener() {
@@ -129,20 +131,20 @@ public class CalcWindow extends JFrame {
                 setAripheticOper( e );
             }
         };
-       
+
         ActionListener actDelLeft = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 texttoFrame();
-            	int delSize = 1;
+                int delSize = 1;
                 txtfil.setLength(0);
-            	if( Double.parseDouble( txtwin.getText() ) < 0 ){
-            	   delSize = 2; 	
-            	}
+                if( Double.parseDouble( txtwin.getText() ) < 0 ){
+                    delSize = 2;
+                }
                 if( txtwin.getText().length() > delSize ){
-                txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
-                txtfil.append(txtwin.getText());
-               } else {
+                    txtwin.setText( txtwin.getText().substring( 0, txtwin.getText().length() - 1 ) );
+                    txtfil.append(txtwin.getText());
+                } else {
                     txtwin.setText("0");
                 }
             }
@@ -201,10 +203,10 @@ public class CalcWindow extends JFrame {
                 if( txtwin.getText().isEmpty() ){
                     txtwin.setText("0");
                 }
-                    if ( !tmp.contains(".")  ) {
-                        txtfil.setLength( 0 );
-                        txtfil.append(txtwin.getText()).append(".");
-                        txtwin.setText( String.valueOf( txtfil ) );
+                if ( !tmp.contains(".")  ) {
+                    txtfil.setLength( 0 );
+                    txtfil.append(txtwin.getText()).append(".");
+                    txtwin.setText( String.valueOf( txtfil ) );
                 }
             }
         };
@@ -416,47 +418,52 @@ public class CalcWindow extends JFrame {
 
 
     public void setAripheticOper( ActionEvent e ) {
+        try {
+            this.operation = ((JButton) e.getSource()).getText();
+            a.setA(Double.parseDouble(txtwin.getText()));
+            addtoText(a);
+            lab.setText(String.valueOf(str));
+            txtfil.setLength(0);
+            txtwin.setText("");
 
-        this.operation = ((JButton) e.getSource()).getText();
-        a.setA(Double.parseDouble(txtwin.getText()));
-        addtoText(a);
-        lab.setText( String.valueOf( str ) );
-        txtfil.setLength(0);
-        txtwin.setText("");
-
+        } catch ( NumberFormatException ignored){
+            if (checkDecimal(a.getA())) {
+                txtwin.setText(String.valueOf( (int) a.getA() ) );
+            }
+            else  txtwin.setText( String.valueOf( a.getA() ) );
+            str.setLength(0);
+            texttoFrame();
+        }
     }
 
-    public void equal( Calculate a, Calculate b, String operation ){
-        str.setLength(0);
-        addtoText( a );
+    public void equal( Calculate a, Calculate b, String operation ) {
+        if ( str.length() != 0 ) {
 
-        System.out.print( a.getA());
-        System.out.print( " " + operation + " " );
-        try {
-
+            str.setLength(0);
+            addtoText(a);
+            System.out.print(a.getA());
+            System.out.print(" " + operation + " ");
             b.setA(Double.parseDouble(txtwin.getText()));
+            System.out.print(b.getA());
+            ar.calculate(a.getOperators(operation), a, b);
 
-        } catch (NumberFormatException et){
-            b.setA( a.getA() );
-        }
-        System.out.print(b.getA());
-        ar.calculate( a.getOperators( operation ), a, b);
+            if (checkDecimal(ar.result)) {
+                txtwin.setText(String.valueOf((int) ar.result));
+                a.setA((int) ar.result);
+            } else {
+                txtwin.setText(String.valueOf(ar.result));
+                a.setA(ar.result);
+            }
 
-        if(checkDecimal( ar.result )) {
-            txtwin.setText(String.valueOf( (int) ar.result ));
-            a.setA( (int) ar.result );
-        }
-        else {
-            txtwin.setText(String.valueOf(ar.result));
-            a.setA( ar.result );
+            System.out.println(" = " + ar.result);
+            str.append(df.format(b.getA())).append(" = ").append(df.format(ar.result)).append("\n");
+            lab.setText(String.valueOf(str));
+            txtfil.setLength(0);
+            System.out.println(df.format(ar.result));
         }
 
-        System.out.println(" = " + ar.result );
-        str.append( df.format(b.getA()) ).append(" = ").append( df.format(ar.result) ).append("\n");
-        lab.setText( String.valueOf( str ));
-        str.setLength(0);
-        txtfil.setLength(0);
-        System.out.println( df.format( ar.result ) );
+        else lab.setText("No operations in stack");
+
     }
 
     public void texttoFrame(){
@@ -464,10 +471,10 @@ public class CalcWindow extends JFrame {
         if ( txtwin.getText().length() >= 11 && txtwin.getText().length() < 13){
             txtwin.setFont(new Font("Calibri", Font.BOLD, 60 ));
         }
-       else if ( txtwin.getText().length() >= 13 && txtwin.getText().length() < 15){
+        else if ( txtwin.getText().length() >= 13 && txtwin.getText().length() < 15){
             txtwin.setFont(new Font("Calibri", Font.BOLD, 50 ));
         }
-       else if ( txtwin.getText().length() > 15 ){
+        else if ( txtwin.getText().length() > 15 ){
             txtwin.setFont(new Font("Calibri", Font.BOLD, 40 ));
         }
 
