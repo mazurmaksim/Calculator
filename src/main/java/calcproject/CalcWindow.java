@@ -418,6 +418,7 @@ public class CalcWindow extends JFrame {
 
 
     public void setAripheticOper( ActionEvent e ) {
+
         try {
             str.setLength(0);
             this.operation = ((JButton) e.getSource()).getText();
@@ -438,33 +439,33 @@ public class CalcWindow extends JFrame {
     }
 
     public void equal( Calculate a, Calculate b, String operation ) {
-        if ( str.length() != 0 ) {
+        try {
+            if (str.length() != 0) {
+                str.setLength(0);
+                addtoText(a);
+                System.out.print(a.getA());
+                System.out.print(" " + operation + " ");
+                b.setA(Double.parseDouble(txtwin.getText()));
+                System.out.print(b.getA());
+                ar.calculate(a.getOperators(operation), a, b);
 
-            str.setLength(0);
-            addtoText(a);
-            System.out.print(a.getA());
-            System.out.print(" " + operation + " ");
-            b.setA(Double.parseDouble(txtwin.getText()));
-            System.out.print(b.getA());
-            ar.calculate(a.getOperators(operation), a, b);
+                if (checkDecimal(ar.result)) {
+                    txtwin.setText(String.valueOf((int) ar.result));
+                    a.setA((int) ar.result);
+                } else {
+                    txtwin.setText(String.valueOf(ar.result));
+                    a.setA(ar.result);
+                }
 
-            if (checkDecimal(ar.result)) {
-                txtwin.setText(String.valueOf((int) ar.result));
-                a.setA((int) ar.result);
-            } else {
-                txtwin.setText(String.valueOf(ar.result));
-                a.setA(ar.result);
-            }
-
-            System.out.println(" = " + ar.result);
-            str.append(df.format(b.getA())).append(" = ").append(df.format(ar.result)).append("\n");
-            lab.setText(String.valueOf(str));
-            txtfil.setLength(0);
-            System.out.println(df.format(ar.result));
+                System.out.println(" = " + ar.result);
+                str.append(df.format(b.getA())).append(" = ").append(df.format(ar.result)).append("\n");
+                lab.setText(String.valueOf(str));
+                txtfil.setLength(0);
+                System.out.println(df.format(ar.result));
+            } else lab.setText("No operations in stack");
+        } catch ( NumberFormatException ignore ){
+            txtwin.setText( operation );
         }
-
-        else lab.setText("No operations in stack");
-
     }
 
     public void texttoFrame(){
