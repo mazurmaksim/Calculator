@@ -419,6 +419,7 @@ public class CalcWindow extends JFrame {
 
     public void setAripheticOper( ActionEvent e ) {
         try {
+            str.setLength(0);
             this.operation = ((JButton) e.getSource()).getText();
             a.setA(Double.parseDouble(txtwin.getText()));
             addtoText(a);
