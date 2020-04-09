@@ -12,7 +12,7 @@ public class CalcWindow extends JFrame {
     private Calculate a;
     private Calculate b;
     private Ariphmetisc ar;
-    private String operation = "";
+    private String operation;
     private JTextField lab;
     private StringBuilder str, txtfil;
     private DecimalFormat df = new DecimalFormat("0.###");
@@ -34,10 +34,12 @@ public class CalcWindow extends JFrame {
         butfont =  new Font( "Calibri", Font.PLAIN, 30 );
         str = new StringBuilder();
         txtfil = new StringBuilder();
+        operation = "";
 
         ActionListener actPlus = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 setAripheticOper( e );
             }
         };
@@ -47,6 +49,7 @@ public class CalcWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    texttoFrame();
                     operation = ((JButton) e.getSource()).getText();
                     a.setA(Double.parseDouble(txtwin.getText()));
                     ar.calculate(a.getOperators(operation), a, b);
@@ -66,6 +69,7 @@ public class CalcWindow extends JFrame {
         ActionListener actX_pow = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 operation = ((JButton) e.getSource()).getText();
                 a.setA( Double.parseDouble( txtwin.getText() ) );
                 ar.calculate( a.getOperators( operation ), a, b);
@@ -80,6 +84,7 @@ public class CalcWindow extends JFrame {
         ActionListener actOneDivx = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 operation = ((JButton) e.getSource()).getText();
                 a.setA( Double.parseDouble( txtwin.getText() ) );
                 ar.calculate( a.getOperators( operation ), a, b);
@@ -94,6 +99,7 @@ public class CalcWindow extends JFrame {
         ActionListener actX_sqrt = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 if( txtwin.getText().isEmpty() ){
                     return;
                 }
@@ -119,6 +125,7 @@ public class CalcWindow extends JFrame {
         ActionListener actDivide = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 setAripheticOper( e );
             }
         };
@@ -126,7 +133,7 @@ public class CalcWindow extends JFrame {
         ActionListener actDelLeft = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
+                texttoFrame();
             	int delSize = 1;
                 txtfil.setLength(0);
             	if( Double.parseDouble( txtwin.getText() ) < 0 ){
@@ -152,6 +159,7 @@ public class CalcWindow extends JFrame {
                 txtfil.setLength(0);
                 lab.setText( "" );
                 str.setLength( 0 );
+                texttoFrame();
 
             }
         };
@@ -159,6 +167,7 @@ public class CalcWindow extends JFrame {
         ActionListener actMinus = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 setAripheticOper(  e );
             }
         };
@@ -177,7 +186,9 @@ public class CalcWindow extends JFrame {
         ActionListener actMultiply = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 setAripheticOper( e );
+
             }
         };
 
@@ -185,7 +196,11 @@ public class CalcWindow extends JFrame {
         ActionListener actComma = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                texttoFrame();
                 String tmp = String.valueOf( txtfil );
+                if( txtwin.getText().isEmpty() ){
+                    txtwin.setText("0");
+                }
                     if ( !tmp.contains(".")  ) {
                         txtfil.setLength( 0 );
                         txtfil.append(txtwin.getText()).append(".");
@@ -198,7 +213,9 @@ public class CalcWindow extends JFrame {
         ActionListener actEqual = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 equal( a, b, operation );
+                texttoFrame();
             }
         };
 
@@ -206,10 +223,13 @@ public class CalcWindow extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
+
                 txtwin.setText("");
+
                 txtfil.append(((JButton)e.getSource()).getText());
+
                 txtwin.setText( String.valueOf(txtfil) );
+                texttoFrame();
             }
         };
 
@@ -224,7 +244,7 @@ public class CalcWindow extends JFrame {
 
         txtwin = new JTextField( "0", 12);
         txtwin.setBounds( 0, 0 + slide, 400, 100 );
-        txtwin.setFont( new Font( "Calibri", Font.BOLD, 70 ) );
+        txtwin.setFont(new Font("Calibri", Font.BOLD, 70));
         txtwin.setHorizontalAlignment( txtwin.RIGHT );
         txtwin.setEditable( false );
         txtwin.setBackground( Color.WHITE );
@@ -439,5 +459,23 @@ public class CalcWindow extends JFrame {
         System.out.println( df.format( ar.result ) );
     }
 
+    public void texttoFrame(){
+
+        if ( txtwin.getText().length() >= 11 && txtwin.getText().length() < 13){
+            txtwin.setFont(new Font("Calibri", Font.BOLD, 60 ));
+        }
+       else if ( txtwin.getText().length() >= 13 && txtwin.getText().length() < 15){
+            txtwin.setFont(new Font("Calibri", Font.BOLD, 50 ));
+        }
+       else if ( txtwin.getText().length() > 15 ){
+            txtwin.setFont(new Font("Calibri", Font.BOLD, 40 ));
+        }
+
+
+        else if ( txtwin.getText().length() < 11 ){
+            txtwin.setFont(new Font("Calibri", Font.BOLD, 70));
+        }
+
+    }
 
 }
