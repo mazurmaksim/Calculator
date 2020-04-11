@@ -199,7 +199,7 @@ public class CalcWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 texttoFrame();
-                String tmp = String.valueOf( txtfil );
+                String tmp = String.valueOf( txtwin.getText() );
                 if( txtwin.getText().isEmpty() ){
                     txtwin.setText("0");
                 }
