@@ -48,21 +48,17 @@ public class CalcWindow extends JFrame {
         ActionListener actPlusminus = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+
+                    double tmpnum = 0;
                     texttoFrame();
-                    operation = ((JButton) e.getSource()).getText();
-                    a.setA(Double.parseDouble(txtwin.getText()));
-                    ar.calculate(a.getOperators(operation), a, b);
-                    a.setA( ar.result );
-                    if( checkDecimal( a.getA() )) {
-                        txtwin.setText(String.valueOf((int) a.getA()));
-                    } else txtwin.setText(String.valueOf( a.getA()) );
+                    tmpnum =  -1 * Double.parseDouble(txtwin.getText());
+                    if( checkDecimal( tmpnum ) ) {
+                        txtwin.setText(String.valueOf((int) tmpnum ));
+                    } else{
+                       txtwin.setText(String.valueOf( tmpnum ) );
+                       }
                     txtfil.setLength(0);
-                } catch ( NumberFormatException er){
-                    ar.calculate(a.getOperators(operation), a, b);
-                    a.setA( ar.result );
-                    txtwin.setText(String.valueOf(df.format(a.getA())));
-                }
+           
             }
         };
 
