@@ -16,6 +16,8 @@ public class CalcWindow extends JFrame {
     private JTextField lab;
     private StringBuilder str, txtfil;
     private DecimalFormat df = new DecimalFormat("0.###");
+    private Calculate k = new Calculate( 0 );
+    private Ariphmetisc rt = new Ariphmetisc(); 
 
     public CalcWindow(){
 
@@ -147,13 +149,16 @@ public class CalcWindow extends JFrame {
         };
 
         ActionListener actC = new ActionListener() {
-            @Override
+            
+        	@Override
             public void actionPerformed(ActionEvent e) {
 
                 operation = "";
                 a.setA( 0 );
                 txtwin.setText( "0" );
                 b.setA( 0 );
+                k.setA( 0 );
+                rt.result = 0;
                 txtfil.setLength(0);
                 lab.setText( "" );
                 str.setLength( 0 );
@@ -211,8 +216,8 @@ public class CalcWindow extends JFrame {
         ActionListener actEqual = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                equal( a, b, operation );
+ 
+            	setAripheticOper(e);
                 texttoFrame();
             }
         };
@@ -368,7 +373,6 @@ public class CalcWindow extends JFrame {
         equal.setFont( butfont );
         f.add( equal );
 
-
         one.addActionListener( digits );
         two.addActionListener( digits );
         three.addActionListener( digits );
@@ -411,18 +415,44 @@ public class CalcWindow extends JFrame {
     public boolean checkDecimal( double num ){
         return num%1 == 0;
     }
-
-
+    
     public void setAripheticOper( ActionEvent e ) {
+    	
+    	try {
 
-        try {
-            str.setLength(0);
-            this.operation = ((JButton) e.getSource()).getText();
-            a.setA(Double.parseDouble(txtwin.getText()));
+        	a.setA(Double.parseDouble(txtwin.getText()));
+
+        	this.operation = ((JButton) e.getSource()).getText();
+        	k.setA( rt.result );
+    		
+        	if( str.length() !=0 ) {
+        		
+        		rt.calculate( String.valueOf( str.charAt( str.length() - 1 ) ) , k, a );
+        		
+        		if( checkDecimal(rt.result) ) {
+        			
+        		txtwin.setText( String.valueOf( (int) rt.result ) );
+        		
+        		} else txtwin.setText( String.valueOf(  rt.result ) );
+        		
+        		System.out.println( rt.result );
+        		
+        	} if(str.length() == 0) {
+        		if( operation.equals("x") ) {
+        			k.setA(1);
+        		}
+        		rt.calculate( operation , a, k );
+        		
+        		if( checkDecimal(rt.result) ) {
+        			
+            		txtwin.setText( String.valueOf( (int) rt.result ) );
+            		
+            		} else txtwin.setText( String.valueOf(  rt.result ) );
+        	} 
+            
             addtoText(a);
             lab.setText(String.valueOf(str));
             txtfil.setLength(0);
-            txtwin.setText("");
 
         } catch ( NumberFormatException ignored){
             if (checkDecimal(a.getA())) {
@@ -432,38 +462,9 @@ public class CalcWindow extends JFrame {
             str.setLength(0);
             texttoFrame();
         }
+    	
     }
-
-    public void equal( Calculate a, Calculate b, String operation ) {
-        try {
-            if (str.length() != 0) {
-                str.setLength(0);
-                addtoText(a);
-                System.out.print(a.getA());
-                System.out.print(" " + operation + " ");
-                b.setA(Double.parseDouble(txtwin.getText()));
-                System.out.print(b.getA());
-                ar.calculate(a.getOperators(operation), a, b);
-
-                if (checkDecimal(ar.result)) {
-                    txtwin.setText(String.valueOf((int) ar.result));
-                    a.setA((int) ar.result);
-                } else {
-                    txtwin.setText(String.valueOf(ar.result));
-                    a.setA(ar.result);
-                }
-
-                System.out.println(" = " + ar.result);
-                str.append(df.format(b.getA())).append(" = ").append(df.format(ar.result)).append("\n");
-                lab.setText(String.valueOf(str));
-                txtfil.setLength(0);
-                System.out.println(df.format(ar.result));
-            } else lab.setText("No operations in stack");
-        } catch ( NumberFormatException ignore ){
-            txtwin.setText( operation );
-        }
-    }
-
+    
     public void texttoFrame(){
 
         if ( txtwin.getText().length() >= 11 && txtwin.getText().length() < 13){
